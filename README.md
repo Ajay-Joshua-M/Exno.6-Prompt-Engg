@@ -1,22 +1,24 @@
 # Experiment – 6: Write and implement Python code that integrates with multiple AI tools to automate the task of interacting with APIs, comparing outputs, and generating actionable insights. 
-REGISTER NUMBER: 212222080004
 
-# Aim:
+### Register No.: 212222080004
+### Date: 11.04.2025
+
+## Aim:
 Write and implement Python code that integrates with multiple AI tools to automate the task of interacting with APIs, comparing outputs, and generating actionable insights.
 
-# AI Tools Required:
+## AI Tools Required:
 •	Text Interpretation & Analysis: OpenAI GPT-4, Claude
 •	Image Captioning & Scene Detection: DeepAI API
 •	Optional Visualization/Output: Matplotlib, JSON
 
-# Use Case:
+## Use Case:
 To develop a system that captures and analyzes traffic images from urban environments and identifies traffic congestion levels using AI tools. It will:
 •	Detect the number and type of vehicles in a traffic image
 •	Use GPT to interpret the scene and give a congestion score
 •	Compare outputs from multiple tools (DeepAI and OpenAI)
 •	Generate actionable traffic-related insights
 
-# Objective:
+## Objective:
 To create a Python-based system that:
 •	Fetches images from an input dataset (traffic photos)
 •	Uses DeepAI API for object detection (vehicle counting)
@@ -24,19 +26,19 @@ To create a Python-based system that:
 •	Compares the model outputs
 •	Produces human-readable insights (e.g., congestion score, suggestions)
 
-# Procedure / Algorithm:
+## Procedure / Algorithm:
 
-Step 1: Define the Use Case
+### Step 1: Define the Use Case
 Traffic congestion analysis using image input.
 The application processes traffic images to detect how crowded the roads are and suggests insights like rerouting or alerts.
 
-Step 2: Set Up API Access
+### Step 2: Set Up API Access
 Use environment variables to securely store API keys:
 import os
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 DEEPAI_API_KEY = os.getenv("DEEPAI_API_KEY")
 
-Step 3: DeepAI Vehicle Detection Function
+### Step 3: DeepAI Vehicle Detection Function
 import requests
 
 def detect_vehicles(image_path):
@@ -49,7 +51,7 @@ def detect_vehicles(image_path):
         )
     return response.json()
 
-Step 4: OpenAI GPT Interpretation Function
+### Step 4: OpenAI GPT Interpretation Function
 import openai
 
 def interpret_traffic_scene(detection_results):
@@ -62,7 +64,7 @@ def interpret_traffic_scene(detection_results):
     )
     return response['choices'][0]['message']['content']
 
-Step 5: Run Test Cases (Image Dataset)
+### Step 5: Run Test Cases (Image Dataset)
 test_images = ["traffic_1.jpg", "traffic_2.jpg", "traffic_3.jpg"]
 results = []
 
@@ -75,7 +77,7 @@ for img in test_images:
         "gpt_summary": gpt_analysis
     })
 
-Step 6: Generate Actionable Insights
+### Step 6: Generate Actionable Insights
 def generate_traffic_insights(summary):
     if "high" in summary.lower():
         level = "High Congestion"
@@ -90,13 +92,13 @@ def generate_traffic_insights(summary):
 
 insights = [generate_traffic_insights(res['gpt_summary']) for res in results]
 
-Step 7: Save Insights to File
+### Step 7: Save Insights to File
 import json
 
 with open("traffic_congestion_report.json", "w") as file:
     json.dump(insights, file, indent=4)
 
-# Conclusion:
+## Conclusion:
 This experiment demonstrates the integration of multiple AI services in Python to create a traffic congestion analysis tool. DeepAI's object detection provided the raw data (vehicle descriptions), while GPT-4 interpreted the data to assess congestion and suggest actionable traffic strategies. The code is modular and scalable to other domains such as parking monitoring or road hazard detection.
 
 # Result:
